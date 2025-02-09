@@ -12,7 +12,8 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         parts = node.text.split(delimiter)
 
         if len(parts) % 2 != 1:
-            raise Exception(f"Unmatched {delimiter} in text: {node.text}")
+            new_list.append(node)
+            continue
         
         for index, part in enumerate(parts):
             if index % 2 == 0:
