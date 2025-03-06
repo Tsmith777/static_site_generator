@@ -1,6 +1,7 @@
 import os
 import shutil
 from textnode import TextNode, TextType
+from generate_page import generate_page
 
 def copy_static(source_dir, dest_dir):
     # Delete the destination directory if it exists
@@ -28,6 +29,7 @@ def copy_static(source_dir, dest_dir):
 
 def main():
     copy_static("static","public")
+    generate_page("content/index.md", "template.html", "public/index.html")
 
 if __name__ == "__main__":
     main()

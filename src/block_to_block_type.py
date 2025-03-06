@@ -5,11 +5,12 @@ def block_to_block_type(markdown_block):
         return "heading"
     elif all(line.startswith(">") for line in markdown_block.split("\n")):
         return "quote"
-    elif all((line.startswith("* ") or line.startswith("- ")) for line in markdown_block.split("\n")):
+    elif all((line.startswith("* ") or line.startswith("- ")) for line in markdown_block.split("\n") if line.strip()):
         return "unordered_list"
     elif is_ordered_list(markdown_block):
         return "ordered_list"
     return "paragraph"
+    print(f"Defaulting to paragraph for block: {markdown_block}")
 
 def is_ordered_list(markdown_block):
     lines = markdown_block.split("\n")
